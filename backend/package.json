@@ -9,6 +9,7 @@
   "author": "Saurabh Mhatre",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.16.0",
     "express": "^4.14.0",
     "mysql": "^2.13.0"
