@@ -36,12 +36,13 @@ exports.fileprint = function (req, res) {
         });
       },
       function (arg1, callback) {
-          //   cmd.get(
-          //     'swift -A http://127.0.0.1:12345/auth/v1.0 -U test:tester -K testing upload user1 '+ writePath+filesArray[i].originalname,
-          //     function(data){
-          //       console.log('the responses is : ',data)
-          //     }
-          //   );
+            console.log("username",global.username,file);
+            cmd.get(
+              'swift -A http://127.0.0.1:12345/auth/v1.0 -U test:tester -K testing upload --object-name '+file.originalname+' '+global.username+' '+ file.path,
+              function(data){
+                console.log('the responses is : ',data)
+              }
+            );
         callback(null, 'done');
       }
     ], function (err, result) {

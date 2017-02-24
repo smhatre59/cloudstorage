@@ -7,14 +7,20 @@ Module:multer
 multer is middleware used to handle multipart form data
 */
 var multer = require('multer');
-var multerupload = multer({ dest: 'fileprint/' })
+var multerupload = multer({ dest: 'fileprint/' });
+var NodeSession = require('node-session');
+var nodeSession = new NodeSession({secret: 'Q3UBzdH9GEfiRCTKbi5MTPyChpzXLsTD'});
+function session(req, res, next){
+    nodeSession.startSession(req, res, next);
+}
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(session);
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    req.session.set('views', 'SOMEVAL');
     next();
 });
 var router = express.Router();

@@ -62,6 +62,7 @@ exports.login = function(req,res){
     if(results.length >0){
       bcrypt.compare(password, results[0].password, function(err, doesMatch){
         if (doesMatch){
+        global.username = req.body.email;
      //log him in
      res.send({
        "code":200,
