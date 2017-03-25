@@ -29,7 +29,8 @@ export default class PastFiles extends Component {
     this.state={
       role:'student',
       filesPreview:[],
-      previousfilesList:[]
+      previousfilesList:[],
+      filesToBePrinted:[]
     }
   }
 componentDidMount(){
@@ -40,7 +41,7 @@ componentDidMount(){
      console.log("some error ");
     }
     else{
-      // console.log("response from server",res.body);
+      // console.log("response from server",JSON.stringify(res.body));
       if(res.body.code=="200"){
         var filestobeDisplayed = res.body.result;
         var filenamesDiv=[];
@@ -72,8 +73,21 @@ componentDidMount(){
     }
   })
 }  
-handleFileCheck(event,filename){
-  console.log("somename",event.target.value,filename)
+handleFileCheck(event,value){
+  var filesToBePrinted = this.state.filesToBePrinted;
+  if(value){
+    filesToBePrinted.push({name:event.target.value})
+  }
+  else{
+    for(var i in filesToBePrinted){
+      if(filesToBePrinted[i].name == event.target.value){
+        filesToBePrinted.splice(i,1)
+      }
+    }
+  }
+  console.log("somename",JSON.stringify(filesToBePrinted));
+  this.setState({filesToBePrinted})
+
 }
 render() {
     return (
