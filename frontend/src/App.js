@@ -7,6 +7,7 @@ injectTapEventPlugin();
 import './App.css';
 import LoginScreen from './Loginscreen';
 import UploadScreen from './UploadScreen';
+import UploadPage from './UploadPage';
 class App extends Component {
   constructor(props){
     super(props);
@@ -17,7 +18,7 @@ class App extends Component {
   }
   componentWillMount(){
     var loginPage =[];
-    loginPage.push(<LoginScreen parentContext={this}/>);
+    loginPage.push(<LoginScreen appContext={this}/>);
     this.setState({
                   loginPage:loginPage
                     })

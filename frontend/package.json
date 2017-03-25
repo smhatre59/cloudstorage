@@ -11,6 +11,7 @@
     "react-dom": "^15.4.2",
     "react-dropzone": "^3.10.0",
     "react-file-tree": "0.0.8",
+    "react-router-dom": "^4.0.0",
     "superagent": "^3.4.4"
   },
   "scripts": {
