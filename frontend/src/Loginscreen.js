@@ -12,13 +12,13 @@ class Loginscreen extends Component {
             <div>
             <MuiThemeProvider>
                 <div>
-                     <RaisedButton label={"Register as Student"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student')}/>
-             </div>
+                    <RaisedButton label={"Register as Student"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student')}/>
+                </div>
              </MuiThemeProvider>
              <MuiThemeProvider>
-             <div>
+                <div>
                     <RaisedButton label={"Register as Teacher"} primary={true} style={style} onClick={(event) => this.handleClick(event,'teacher')}/>
-            </div>
+                </div>
             </MuiThemeProvider>
             </div>
         )
