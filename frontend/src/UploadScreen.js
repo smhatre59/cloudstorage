@@ -11,12 +11,9 @@ Module:Material-UI
 Material-UI is used for designing ui of the app
 */
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
-import {blue500, red500, greenA200} from 'material-ui/styles/colors';
+import { blue500 } from 'material-ui/styles/colors';
 
 var apiBaseUrl = "http://localhost:4000/api/";
 /*
@@ -34,13 +31,13 @@ class UploadScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            role:'student',
-            filesPreview:[],
-            filesToBeSent:[],
-            draweropen:false,
-            printcount:10,
-            printingmessage:'',
-            printButtonDisabled:false
+            role: 'student',
+            filesPreview: [],
+            filesToBeSent: [],
+            draweropen: false,
+            printcount: 10,
+            printingmessage: '',
+            printButtonDisabled: false
         }
     }
     componentWillMount() {
@@ -48,10 +45,10 @@ class UploadScreen extends Component {
         var printcount;
         //set upload limit based on user role
         if (this.props.role) {
-            if (this.props.role == 'student') {
+            if (this.props.role === 'student') {
                 printcount = 5;
             }
-            else if (this.props.role == 'teacher') {
+            else if (this.props.role === 'teacher') {
                 printcount =10;
             }
         }
@@ -65,10 +62,10 @@ class UploadScreen extends Component {
     */
     handleCloseClick(event,index) {
         // console.log("filename",index);
-        var filesToBeSent=this.state.filesToBeSent;
+        var filesToBeSent = this.state.filesToBeSent;
         filesToBeSent.splice(index,1);
         // console.log("files",filesToBeSent);
-        var filesPreview=[];
+        var filesPreview = [];
         for(var i in filesToBeSent) {
             filesPreview.push(<div>
                 {filesToBeSent[i][0].name}
@@ -92,10 +89,10 @@ class UploadScreen extends Component {
     */
     onDrop(acceptedFiles, rejectedFiles) {
         // console.log('Accepted files: ', acceptedFiles[0].name);
-        var filesToBeSent=this.state.filesToBeSent;
+        var filesToBeSent = this.state.filesToBeSent;
         if (filesToBeSent.length < this.state.printcount) {
             filesToBeSent.push(acceptedFiles);
-            var filesPreview=[];
+            var filesPreview = [];
             for(var i in filesToBeSent) {
                 filesPreview.push(<div>
                     {filesToBeSent[i][0].name}
@@ -112,7 +109,7 @@ class UploadScreen extends Component {
             }
             this.setState({filesToBeSent,filesPreview});
         } else {
-            alert("You have reached the limit of printing files at a time")
+            alert('You have reached the limit of printing files at a time')
         }
 
         // console.log('Rejected files: ', rejectedFiles);
@@ -125,9 +122,12 @@ class UploadScreen extends Component {
     */
     handleClick(event) {
         // console.log("handleClick",event);
-        this.setState({printingmessage:'Please wait until your files are being printed',printButtonDisabled:true})
+        this.setState({
+            printingmessage: 'Please wait until your files are being printed',
+            printButtonDisabled: true
+        })
         var self = this;
-        if (this.state.filesToBeSent.length>0) {
+        if (this.state.filesToBeSent.length > 0) {
             var filesArray = this.state.filesToBeSent;
             var req = request.post(apiBaseUrl+'fileprint');
             for (var i in filesArray) {

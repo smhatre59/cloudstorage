@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import {List, ListItem} from 'material-ui/List';
-import ActionInfo from 'material-ui/svg-icons/action/info';
-import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import Avatar from 'material-ui/Avatar';
-import FileFolder from 'material-ui/svg-icons/file/folder';
 import ActionAssignment from 'material-ui/svg-icons/action/assignment';
-import {blue500, yellow600,red500, greenA200} from 'material-ui/styles/colors';
-import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
+import { blue500 } from 'material-ui/styles/colors';
 import Checkbox from 'material-ui/Checkbox';
 import './App.css';
-import FontIcon from 'material-ui/FontIcon';
+
 var apiBaseUrl = "http://localhost:4000/api/";
 
 /*
@@ -41,7 +35,7 @@ export default class PastFiles extends Component {
                 console.log('some error');
             } else {
                 // console.log("response from server",JSON.stringify(res.body));
-                if (res.body.code == '200') {
+                if (res.body.code === '200') {
                     var filestobeDisplayed = res.body.result;
                     var filenamesDiv = [];
                     var fileDivContainer = [];
@@ -86,10 +80,12 @@ export default class PastFiles extends Component {
     handleFileCheck(event,value) {
         var filesToBePrinted = this.state.filesToBePrinted;
         if (value) {
-            filesToBePrinted.push({name:event.target.value})
+            filesToBePrinted.push({
+                name: event.target.value
+            })
         } else {
             for (var i in filesToBePrinted) {
-                if (filesToBePrinted[i].name == event.target.value) {
+                if (filesToBePrinted[i].name === event.target.value) {
                     filesToBePrinted.splice(i,1)
                 }
             }
