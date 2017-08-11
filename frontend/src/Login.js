@@ -12,28 +12,28 @@ import UploadPage from './UploadPage';
 class Login extends Component {
     constructor(props) {
         super(props);
-        var localloginComponent=[];
+        var localloginComponent = [];
         localloginComponent.push(
             <MuiThemeProvider>
                 <div>
-                 <TextField
-                     hintText="Enter your College Rollno"
-                     floatingLabelText="Student Id"
-                     onChange = {(event,newValue) => this.setState({username:newValue})}
-                     />
-                 <br/>
-                     <TextField
-                         type="password"
-                         hintText="Enter your Password"
-                         floatingLabelText="Password"
-                         onChange = {(event,newValue) => this.setState({password:newValue})}
-                         />
-                     <br/>
-                     <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-             </div>
-             </MuiThemeProvider>
+                    <TextField
+                        hintText="Enter your College Rollno"
+                        floatingLabelText="Student Id"
+                        onChange = {(event,newValue) => this.setState({username:newValue})}
+                        />
+                    <br/>
+                    <TextField
+                        type="password"
+                        hintText="Enter your Password"
+                        floatingLabelText="Password"
+                        onChange = {(event,newValue) => this.setState({password:newValue})}
+                        />
+                    <br/>
+                    <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+                </div>
+            </MuiThemeProvider>
         )
-        this.state={
+        this.state = {
             username:'',
             password:'',
             menuValue:1,
@@ -45,7 +45,7 @@ class Login extends Component {
         // console.log("willmount prop values",this.props);
         if (this.props.role != undefined) {
             if (this.props.role == 'student') {
-                console.log("in student componentWillMount");
+                console.log('in student componentWillMount');
                 var localloginComponent=[];
                 localloginComponent.push(
                     <MuiThemeProvider>

@@ -24,28 +24,28 @@ class App extends Component {
      * @param {*} event
      */
     toggleDrawer(event) {
-    // console.log("drawer click");
-    this.setState({draweropen: !this.state.draweropen})
+        // console.log("drawer click");
+        this.setState({draweropen: !this.state.draweropen})
     }
     handleMenuClick(event,page) {
         switch(page) {
-            case "openprint":
-            // console.log("need to open uploadapge")
-            var currentScreen=[];
-            currentScreen.push(<UploadScreen appContext={this.props.appContext} role={this.props.role}/>);
-            this.setState({currentScreen})
-            break;
-            case "openpast":
-            // console.log("need to open pastfiles")
-            var currentScreen=[];
-            currentScreen.push(<Pastfiles appContext={this.props.appContext} role={this.props.role}/>);
-            this.setState({currentScreen})
-            break;
-            case "logout":
-            var loginPage =[];
-            loginPage.push(<LoginScreen appContext={this.props.appContext}/>);
-            this.props.appContext.setState({loginPage:loginPage,uploadScreen:[]})
-            break;
+            case 'openprint':
+                // console.log('need to open uploadapge')
+                var currentScreen=[];
+                currentScreen.push(<UploadScreen appContext={this.props.appContext} role={this.props.role}/>);
+                this.setState({currentScreen})
+                break;
+            case 'openpast':
+                // console.log('need to open pastfiles')
+                var currentScreen=[];
+                currentScreen.push(<Pastfiles appContext={this.props.appContext} role={this.props.role}/>);
+                this.setState({currentScreen})
+                break;
+            case 'logout':
+                var loginPage =[];
+                loginPage.push(<LoginScreen appContext={this.props.appContext}/>);
+                this.props.appContext.setState({loginPage:loginPage,uploadScreen:[]})
+                break;
         }
         this.setState({draweropen:false})
     }
@@ -71,7 +71,7 @@ class App extends Component {
                             >clear</FontIcon></a>
                             </div>
                         </MenuItem>
-                            <div>
+                        <div>
                             <MenuItem onClick={(event) => this.handleMenuClick(event,"openprint")}>
                                     Printing Page
                             </MenuItem>
@@ -81,7 +81,7 @@ class App extends Component {
                             <MenuItem onClick={(event) => this.handleMenuClick(event,"logout")}>
                                     Logout
                             </MenuItem>
-                            </div>
+                        </div>
                     </Drawer>
                 </MuiThemeProvider>
                 <div>

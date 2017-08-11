@@ -22,7 +22,7 @@ class Loginscreen extends Component {
             </MuiThemeProvider>
             </div>
         )
-        this.state={
+        this.state = {
             username:'',
             password:'',
             loginscreen:[],
@@ -36,19 +36,19 @@ class Loginscreen extends Component {
     componentWillMount() {
         var loginscreen=[];
         loginscreen.push(<Login parentContext={this} appContext={this.props.appContext}/>);
-        var loginmessage = "Not registered yet, Register Now";
+        var loginmessage = 'Not registered yet, Register Now';
         this.setState({
-                                    loginscreen:loginscreen,
-                                    loginmessage:loginmessage
-                                        })
+            loginscreen:loginscreen,
+            loginmessage:loginmessage
+        })
     }
     handleClick(event,userRole) {
-        console.log("event",userRole);
+        console.log('event',userRole);
         var loginmessage;
         if (this.state.isLogin) {
             var loginscreen=[];
             loginscreen.push(<Register parentContext={this} appContext={this.props.appContext} role={userRole}/>);
-            loginmessage = "Already registered.Go to Login";
+            loginmessage = 'Already registered.Go to Login';
             var loginButtons=[];
             loginButtons.push(
                 <div>
@@ -60,36 +60,37 @@ class Loginscreen extends Component {
                 </div>
             )
             this.setState({
-                                         loginscreen:loginscreen,
-                                         loginmessage:loginmessage,
-                                         loginButtons:loginButtons,
-                                         isLogin:false
-                                     })
-        }
-        else{
-            var loginscreen=[],loginButtons=[];
+                loginscreen:loginscreen,
+                loginmessage:loginmessage,
+                loginButtons:loginButtons,
+                isLogin:false
+            })
+        } else {
+            var loginscreen=[],
+                loginButtons=[];
+
             loginButtons.push(
                 <div>
-                <MuiThemeProvider>
-                    <div>
-                         <RaisedButton label={"Register as Student"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student')}/>
-                 </div>
-                 </MuiThemeProvider>
-                 <MuiThemeProvider>
-                 <div>
-                        <RaisedButton label={"Register as Teacher"} primary={true} style={style} onClick={(event) => this.handleClick(event,'teacher')}/>
-                </div>
-                </MuiThemeProvider>
+                    <MuiThemeProvider>
+                        <div>
+                            <RaisedButton label={"Register as Student"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student')}/>
+                        </div>
+                    </MuiThemeProvider>
+                    <MuiThemeProvider>
+                        <div>
+                            <RaisedButton label={"Register as Teacher"} primary={true} style={style} onClick={(event) => this.handleClick(event,'teacher')}/>
+                        </div>
+                    </MuiThemeProvider>
                 </div>
             )
             loginscreen.push(<Login parentContext={this} appContext={this.props.appContext} role={userRole}/>);
-            loginmessage = "Not Registered yet.Go to registration";
+            loginmessage = 'Not Registered yet.Go to registration';
             this.setState({
-                                         loginscreen:loginscreen,
-                                         loginmessage:loginmessage,
-                                         loginButtons:loginButtons,
-                                         isLogin:true
-                                     })
+                loginscreen:loginscreen,
+                loginmessage:loginmessage,
+                loginButtons:loginButtons,
+                isLogin:true
+            })
         }
     }
     render() {

@@ -9,7 +9,7 @@ import Login from './Login';
 class Register extends Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             first_name:'',
             last_name:'',
             email:'',
@@ -17,66 +17,59 @@ class Register extends Component {
         }
     }
     componentWillReceiveProps(nextProps) {
-        console.log("nextProps",nextProps);
+        console.log('nextProps',nextProps);
     }
     handleClick(event,role) {
-        var apiBaseUrl = "http://localhost:4000/api/";
-        // console.log("values in register handler",role);
+        var apiBaseUrl = 'http://localhost:4000/api/';
+        // console.log('values in register handler',role);
         var self = this;
         //To be done:check for empty values before hitting submit
         if (this.state.first_name.length>0 && this.state.last_name.length>0 && this.state.email.length>0 && this.state.password.length>0) {
-            var payload={
-            "first_name": this.state.first_name,
-            "last_name":this.state.last_name,
-            "userid":this.state.email,
-            "password":this.state.password,
-            "role":role
+            var payload = {
+                'first_name': this.state.first_name,
+                'last_name':this.state.last_name,
+                'userid':this.state.email,
+                'password':this.state.password,
+                'role':role
             }
-            axios.post(apiBaseUrl+'/register', payload)
-         .then(function (response) {
-             console.log(response);
-             if (response.data.code == 200) {
-                //    console.log("registration successfull");
-                 var loginscreen=[];
-                 loginscreen.push(<Login parentContext={this} appContext={self.props.appContext} role={role}/>);
-                 var loginmessage = "Not Registered yet.Go to registration";
-                 self.props.parentContext.setState({loginscreen:loginscreen,
-                 loginmessage:loginmessage,
-                 buttonLabel:"Register",
-                 isLogin:true
+            axios.post(apiBaseUrl+'/register', payload).then(function (response) {
+                console.log(response);
+                if (response.data.code == 200) {
+                    //    console.log('registration successfull');
+                    var loginscreen = [];
+                    loginscreen.push(<Login parentContext={this} appContext={self.props.appContext} role={role}/>);
+                    var loginmessage = 'Not Registered yet.Go to registration';
+                    self.props.parentContext.setState({
+                        loginscreen:loginscreen,
+                        loginmessage:loginmessage,
+                        buttonLabel:'Register',
+                        isLogin:true
                     });
-             }
-             else{
-                 console.log("some error ocurred",response.data.code);
-             }
-         })
-         .catch(function (error) {
-             console.log(error);
-         });
+                } else{
+                    console.log('some error ocurred',response.data.code);
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } else {
+            alert('Input field value is missing');
         }
-        else{
-            alert("Input field value is missing");
-        }
-
     }
     render() {
-        // console.log("props",this.props);
+        // console.log('props',this.props);
         var userhintText,userLabel;
-        if (this.props.role == "student") {
-            userhintText="Enter your Student Id",
-            userLabel="Student Id"
-        }
-        else{
-            userhintText="Enter your Teacher Id",
-            userLabel="Teacher Id"
+        if (this.props.role == 'student') {
+            userhintText = 'Enter your Student Id',
+            userLabel = 'Student Id'
+        } else {
+            userhintText = 'Enter your Teacher Id',
+            userLabel = 'Teacher Id'
         }
         return (
             <div>
                 <MuiThemeProvider>
                     <div>
-                    <AppBar
-                         title="Register"
-                     />
+                    <AppBar title="Register"/>
                      <TextField
                          hintText="Enter your First Name"
                          floatingLabelText="First Name"
