@@ -7,11 +7,13 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "material-ui": "^0.20.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-dropzone": "^3.10.0",
     "react-file-tree": "0.0.8",
     "react-router-dom": "^4.0.0",
+    "react-tap-event-plugin": "^3.0.2",
     "superagent": "^3.4.4"
   },
   "scripts": {

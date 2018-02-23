@@ -35,7 +35,7 @@ class Register extends Component {
       axios.post(apiBaseUrl+'/register', payload)
      .then(function (response) {
        console.log(response);
-       if(response.data.code == 200){
+       if(response.data.code === 200){
         //  console.log("registration successfull");
          var loginscreen=[];
          loginscreen.push(<Login parentContext={this} appContext={self.props.appContext} role={role}/>);
@@ -62,7 +62,7 @@ class Register extends Component {
   render() {
     // console.log("props",this.props);
     var userhintText,userLabel;
-    if(this.props.role == "student"){
+    if(this.props.role === "student"){
       userhintText="Enter your Student Id",
       userLabel="Student Id"
     }

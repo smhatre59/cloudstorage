@@ -7,7 +7,6 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 var apiBaseUrl = "http://localhost:4000/api/";
 import axios from 'axios';
-import UploadScreen from './UploadScreen';
 import UploadPage from './UploadPage';
 class Login extends Component {
   constructor(props){
@@ -19,7 +18,7 @@ class Login extends Component {
          <TextField
            hintText="Enter your College Rollno"
            floatingLabelText="Student Id"
-           onChange = {(event,newValue) => this.setState({username:newValue})}
+           onChange = {(event,newValue)=>this.setState({username:newValue})}
            />
          <br/>
            <TextField
