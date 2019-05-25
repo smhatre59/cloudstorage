@@ -6,14 +6,15 @@
     "react-scripts": "0.8.5"
   },
   "dependencies": {
+    "@material-ui/core": "^4.0.0",
+    "@material-ui/styles": "^4.0.0",
     "axios": "^0.15.3",
     "material-ui": "^0.20.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-dropzone": "^3.10.0",
     "react-file-tree": "0.0.8",
     "react-router-dom": "^4.0.0",
-    "react-tap-event-plugin": "^3.0.2",
     "superagent": "^3.4.4"
   },
   "scripts": {

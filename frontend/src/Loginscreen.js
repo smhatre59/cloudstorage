@@ -14,7 +14,7 @@ class Loginscreen extends Component {
     super(props);
     var loginButtons=[];
     loginButtons.push(
-      <div>
+      <div key={"Login-Div"}>
       <MuiThemeProvider>
         <div>
            <RaisedButton label={"Register as Student"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student')}/>
@@ -40,7 +40,7 @@ class Loginscreen extends Component {
   }
   componentWillMount(){
     var loginscreen=[];
-    loginscreen.push(<Login parentContext={this} appContext={this.props.appContext}/>);
+    loginscreen.push(<Login parentContext={this} appContext={this.props.appContext} key={"LoginScreen"}/>);
     var loginmessage = "Not registered yet, Register Now";
     this.setState({
                   loginscreen:loginscreen,

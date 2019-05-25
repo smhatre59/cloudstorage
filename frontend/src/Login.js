@@ -13,12 +13,12 @@ class Login extends Component {
     super(props);
     var localloginComponent=[];
     localloginComponent.push(
-      <MuiThemeProvider>
+      <MuiThemeProvider key={"theme"}>
         <div>
          <TextField
            hintText="Enter your College Rollno"
            floatingLabelText="Student Id"
-           onChange = {(event,newValue)=>this.setState({username:newValue})}
+           onChange={(event,newValue) => this.setState({username:newValue})}
            />
          <br/>
            <TextField
@@ -77,14 +77,14 @@ class Login extends Component {
            <TextField
              hintText="Enter your College Rollno"
              floatingLabelText="Teacher Id"
-             onChange = {(event,newValue) => this.setState({username:newValue})}
+             onChange={(event,newValue) => this.setState({username:newValue})}
              />
            <br/>
              <TextField
                type="password"
                hintText="Enter your Password"
                floatingLabelText="Password"
-               onChange = {(event,newValue) => this.setState({password:newValue})}
+               onChange={(event,newValue) => this.setState({password:newValue})}
                />
              <br/>
              <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
